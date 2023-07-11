@@ -1,0 +1,59 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<body>
+<div class="d-block mx-auto w-50"><br>
+    <label for="s_no">Name</label>
+    <input type="text" name="s_no" id="s_no" class="form-control" [(ngModel)]="User.full_name"
+        placeholder="">
+    <div class="d-flex my-2">
+        <input type="submit" [value]="'Update'" class="btn btn-primary" (click)="Read()"></div>
+  
+        
+          
+          <div>
+            <label for="s_no" class="form-label">Name</label>
+            <input type="text" name="s_no" id="s_no"  class="form-control"   [(ngModel)]="User.full_name">
+  
+            <label for="name" class="form-label">Email</label>
+            <input type="text" name="name" id="name" class="form-control"    [(ngModel)]="User.email">
+  
+            <label for="contact_no" class="form-label">Phone number</label>
+            <input type="text" name="contact_no" id="contact_no"  class="form-control"  [(ngModel)]="User.phone">
+       
+            <label for="no_of_people" class="form-label">Date of birth</label>
+            <input type="text" name="no_of_people" id="no_of_people" class="form-control" [(ngModel)]="User.dob">
+  
+            <label for="head" class="form-label">Charity Head:</label>
+            <input type="text" name="head" id="head"  class="form-control" [(ngModel)]="User.gender">
+  
+            <label for="location" class="form-label">Location:</label>
+            <input type="text" name="location" id="location" class="form-control" [(ngModel)]="User.a_date">
+  
+            <label for="mail" class="form-label">E-mail:</label>
+            <input type="text" name="mail" id="mail"  class="form-control " [(ngModel)]="User.a_time">
+
+            <label for="mail" class="form-label">E-mail:</label>
+            <input type="text" name="mail" id="mail"  class="form-control " [(ngModel)]="User.aadhar">
+
+            <label for="mail" class="form-label">E-mail:</label>
+            <input type="text" name="mail" id="mail"  class="form-control " [(ngModel)]="User.problem">
+
+            <label for="mail" class="form-label">E-mail:</label>
+            <input type="text" name="mail" id="mail"  class="form-control " [(ngModel)]="User.city">
+  
+          </div>
+          <br>
+            <button type="button" class="btn btn-primary"  (click)="Update()">Save changes</button><br>
+          </div>
+        
+          <div class="alert alert-success my-2" *ngIf="!(SuccessMsg =='')">{{SuccessMsg}}</div>
+          <div class="alert alert-danger my-2" *ngIf="!(ErrorMsg =='')">{{ErrorMsg}}</div>
+  
+      
+  
+ </body>

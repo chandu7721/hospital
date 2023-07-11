@@ -1,0 +1,57 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+
+<div class="d-block mx-auto w-50">
+    <label for="RollNumber">Roll Number</label>
+    <input type="text" name="RollNumber" id="RollNumber" class="form-control" [(ngModel)]="Roll" placeholder="Ex:20471A05..">
+    <div class="d-flex my-2">
+        <input type="submit" value="Get all" class="btn btn-primary" (click)="Read('All')">
+        <input type="submit" [value]="'Get '+ Roll" class="btn btn-primary mx-1" (click)="Read(Roll)">
+    </div>
+    <p *ngIf="!(Results.length!=0 && GotResult)" class="text-danger">No Result to Show</p>
+</div>
+<table class="table w-50  mx-auto" *ngIf="Results.length!=0 && GotResult">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Roll Number</th>
+            <th scope="col">Name</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let Data of Results">
+            <th scope="row">{{Data[0]}}</th>
+            <td>{{Data[1]}}</td>
+            <td><input type="button" role="button" class="btn btn-danger" value="delete" (click)="Delete(Data[0])">
+            </td>
+            <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="Roll = Data[0]">
+                    Update
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Updated Values</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="text" name="Name" id="Name" placeholder="Name" class="form-control my-1" [(ngModel)]="UpdatedUser.email">
+          <input type="text" name="RollNumber" id="RollNumber" placeholder="Roll Number" class="form-control my-1" [(ngModel)]="UpdatedUser.full_name">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" (click)="Update(Roll,UpdatedUser)">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+  
